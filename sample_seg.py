@@ -1,5 +1,5 @@
-%run 'segnet_model.ipynb'
-%run 'data_loader.ipynb'
+# %run 'segnet_model.ipynb'
+# %run 'data_loader.ipynb'
 
 import torch 
 import numpy as np 
@@ -7,6 +7,8 @@ from torch.autograd import Variable
 import torch.nn as nn
 from torchvision import datasets,models,transforms
 import torch.optim as optim
+from segnet_model import network
+from data_loader import data_loader_seg
 
 model_ft = network()
 
@@ -14,9 +16,9 @@ if torch.cuda.is_available():
     model_ft = model_ft.cuda()
 
 #APPLY TRANSFORM IF NEEDED
-# trans = transforms.Compose([transforms.Scale(700), transforms.CenterCrop(572), transforms.ToTensor()])
+trans = transforms.Compose([transforms.ToTensor()])
 
-dsets = data_loader_seg('images/training/')
+dsets = data_loader_seg('images/training/',trans=trans)
 dsets_enqueuer = torch.utils.data.DataLoader(dsets, batch_size=1, num_workers=0, drop_last=False)
 
 criterion = nn.BCEWithLogitsLoss()
