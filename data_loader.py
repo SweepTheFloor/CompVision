@@ -32,11 +32,8 @@ class data_loader_seg(Dataset):
 
         if self.trans:
             image = self.trans(image)
-            image_seg = trans(image_seg)
+            image_seg = self.trans(image_seg)
 
 
 
         return {'image': image, 'image_seg': image_seg}
-
-
-
