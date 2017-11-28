@@ -71,7 +71,7 @@ class up_block(nn.Module):
         
         #Upsampling
         self.unpooled = nn.MaxUnpool2d(kernel_size=(2,2) , stride=2)
-        self.unconv = nn.Conv2d(channels[0], channels[1], kernel_size=(8,8), stride=0, padding=1, dilation=1, bias=True)
+        self.unconv = nn.Conv2d(channels[0], channels[1], kernel_size=(8,8), stride=1, padding=1, dilation=1, bias=True)
             
         if(num_of_convs== 2):
             self.conv1 = nn.Conv2d(channels[0], channels[1], kernel_size=(3,3),stride=1,padding=1,dilation=1,bias=True)
@@ -82,7 +82,7 @@ class up_block(nn.Module):
             self.conv2 = nn.Conv2d(channels[1], channels[1], kernel_size=(3,3),stride=1,padding=1,dilation=1,bias=True)
             self.conv3 = nn.Conv2d(channels[1], channels[1], kernel_size=(3,3),stride=1,padding=1,dilation=1,bias=True)
         
-        self.batchNorm = nn.BatchNorm2d(channels[1])
+        self.batchnorm = nn.BatchNorm2d(channels[1])
         self.relu = nn.ReLU(inplace=True)
         
         for m in self.modules():
@@ -146,11 +146,11 @@ class network(nn.Module):
         out4, indices4, size4 = self.layer4(out3)
         out5, indices5, size5 = self.layer5(out4)
         
-        out6 = self.layer6(out5, indices5, size5)
-        out7 = self.layer7(out6, indices4, size4)
-        out8 = self.layer8(out7, indices3, size3)
-        out9 = self.layer9(out8, indices2, size2)
-        out10 = self.layer10(out9, indices1, size1)
+        out6 = self.layer6(out5, indices5, size4)
+        out7 = self.layer7(out6, indices4, size3)
+        out8 = self.layer8(out7, indices3, size2)
+        out9 = self.layer9(out8, indices2, size1)
+        out10 = self.layer10(out9, indices1)
         
         res = self.softmax(out10)
         
