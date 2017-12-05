@@ -66,67 +66,30 @@ for Epoch in range(100):
     loss_lst_train.append(loss_data.cpu().numpy()/idx)
     
 
-    # for idx,data in enumerate(dsets_enqueuer_test,1):
-    #     image,image_seg = data['image'], data['image_seg']
-    #     #print("imageSize = ", image.size())
-    #     if torch.cuda.is_available():
-    #         image, image_seg = Variable(image.cuda(), volatile=True), Variable(image_seg.cuda(), volatile=True)
-    #     else:
-    #         image, image_seg = Variable(image, volatile=True), Variable(image_seg, volatile=True)
+    for idx,data in enumerate(dsets_enqueuer_test,1):
+        image,image_seg = data['image'], data['image_seg']
+        #print("imageSize = ", image.size())
+        if torch.cuda.is_available():
+            image, image_seg = Variable(image.cuda(), volatile=True), Variable(image_seg.cuda(), volatile=True)
+        else:
+            image, image_seg = Variable(image, volatile=True), Variable(image_seg, volatile=True)
 
-    #     model_ft.eval()
-    #     output = model_ft(image)
-    #     loss = criterion(output,image_seg)
+        model_ft.eval()
+        output = model_ft(image)
+        loss = criterion(output,image_seg)
 
-    #     loss_data_testing += loss.data
+        loss_data_testing += loss.data
 
-    # loss_lst_test.append(loss_data_testing.cpu().numpy()/idx)
+    loss_lst_test.append(loss_data_testing.cpu().numpy()/idx)
     
-    # with open('/Users/crohan009/Documents/Stuff/CS/Deep_Learning/NYUAutonomous/Semantic_segmentation_implementations/SegNet/saved_model_weights/model_save{0}.pth.tar'.format(Epoch), 'wb') as fModel: 
-    #     torch.save(model_ft, fModel)   
+    with open('saved_model_weights/model_save{0}.pth.tar'.format(Epoch), 'wb') as fModel: 
+        torch.save(model_ft, fModel)   
     
-    # pickle.dump( (loss_lst_train, loss_lst_test), open( "saveSegnetValues.p", "wb" ) )
-
+    pickle.dump( (loss_lst_train, loss_lst_test), open( "saveSegnetValues.p", "wb" ) )
     
-
-    # with open("/Users/crohan009/Documents/Stuff/CS/Deep_Learning/NYUAutonomous/Semantic_segmentation_implementations/SegNet/saved_model_weights/loss_file.txt", 'wb') as fLoss:
-    #     fLoss.write(loss_lst_train)
 
 
         
-
-
-# print("\n\n\n......Testing......\n\n\n")
-
-# for idx,data in enumerate(dsets_enqueuer_test,1):
-#         print("\nTest image number = ", idx, end=".....\n")
-#         image,image_seg = data['image'], data['image_seg']
-#         print("imageSize = ", image.size())
-#         if torch.cuda.is_available():
-#             image, image_seg = Variable(image.cuda(), requires_grad = False), Variable(image_seg.cuda(), requires_grad = False)
-#         else:
-#             image, image_seg = Variable(image, requires_grad = False), Variable(image_seg, requires_grad = False)
-
-#         output = model_ft(image)
-
-
-
-#         print("\nImage", idx, "forward prop complete",end="\n")
-#         print("fd_prop_output size = ", output.size(),"\n")
-
-#         print(type(output))
-#         break
-
-
-        # image_np = np.array(image)
-        # image_seg_np = np.array(image_seg)
-
-        # print("1")
-
-        # plt.imshow(image_np)
-        # plt.imshow(image_seg_np)
-
-        # print("2")
 
 
 
