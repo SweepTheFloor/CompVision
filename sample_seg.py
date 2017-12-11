@@ -1,15 +1,15 @@
 # %run 'segnet_model.ipynb'
 # %run 'data_loader.ipynb'
 
+from segnet_model import network
+from data_loader import data_loader_seg
+
 import torch 
 import numpy as np 
 from torch.autograd import Variable
 import torch.nn as nn
 from torchvision import datasets,models,transforms
 import torch.optim as optim
-from segnet_model import network
-#from segnet_model import SegNet
-from data_loader import data_loader_seg
 from PIL import Image
 import pickle
 
