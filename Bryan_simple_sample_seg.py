@@ -17,7 +17,7 @@ if torch.cuda.is_available():
 #APPLY TRANSFORM IF NEEDED
 trans = transforms.Compose([transforms.ToTensor()])
 
-dsets = data_loader_seg('images/training/',trans=trans)
+dsets = data_loader_seg('images_mini_set/training/',trans=trans)
 dsets_enqueuer = torch.utils.data.DataLoader(dsets, batch_size=1, num_workers=0, drop_last=False)
 
 criterion = nn.BCEWithLogitsLoss()
