@@ -22,6 +22,8 @@ class data_loader_seg(Dataset):
     def __getitem__(self,idx):
         image = Image.open(self.root_dir + 'color/' + self.files[idx])
         image_seg = Image.open(self.root_dir + 'label/' + self.files[idx].split('_')[0] + '_road_' + self.files[idx].split('_')[1])
+        
+        # THIS PART PRE-PROCESSES THE LABELED IMAGE FOR A BINARY SEGMENTATION (Remove when segmenting more than 2)
         image_seg = image_seg.convert('L')
         #image_seg = image_seg.resize((388,388))
         image_seg = np.array(image_seg)
