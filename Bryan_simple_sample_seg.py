@@ -15,7 +15,10 @@ if torch.cuda.is_available():
     model_ft = model_ft.cuda()
 
 #APPLY TRANSFORM IF NEEDED
-trans = transforms.Compose([transforms.ToTensor()])
+trans = transforms.Compose([transforms.Scale(),transforms.ToTensor()]) 
+#<- Inside Scale add the image size you want or you can also
+#use transforms.CenterCrop(image_size) or Transforms.RandomCrop(image_size)
+
 
 dsets = data_loader_seg('images_mini_set/training/',trans=trans)
 dsets_enqueuer = torch.utils.data.DataLoader(dsets, batch_size=1, num_workers=0, drop_last=False)
