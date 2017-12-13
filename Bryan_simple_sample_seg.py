@@ -1,5 +1,6 @@
 from segnet_model import network
 from data_loader import data_loader_seg
+form LoadWeights import preload_encoder_weights
 
 import torch 
 import numpy as np 
@@ -8,11 +9,11 @@ import torch.nn as nn
 from torchvision import datasets,models,transforms
 import torch.optim as optim
 
-
 model_ft = network()
-
 if torch.cuda.is_available():
     model_ft = model_ft.cuda()
+    
+ preload_encoder_weights(model_ft)
 
 #APPLY TRANSFORM IF NEEDED
 trans = transforms.Compose([transforms.ToTensor()])
