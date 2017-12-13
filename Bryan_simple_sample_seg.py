@@ -1,6 +1,6 @@
 from segnet_model import network
 from data_loader import data_loader_seg
-form LoadWeights import preload_encoder_weights
+from LoadWeights import preload_encoder_weights
 
 import torch 
 import numpy as np 
