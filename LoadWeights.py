@@ -1,4 +1,4 @@
-def preload_encoder_weights(model_ft):
+def load_vgg16_cnn_encoder_weights(model_ft):
     
     import torchvision.models as models
     vgg16 = models.vgg16_bn(pretrained=True)
@@ -22,9 +22,32 @@ def preload_encoder_weights(model_ft):
     # load the new state dict        
     model_ft.load_state_dict(model_ft_dict)
 
+def save_weights_as_pickleFile(model_ft):
+    import pickle
+    with open("segnet_state_dict.pkl", "wb") as output_file:
+         pickle.dump(model_ft.state_dict(), output_file)
+    
+def load_weights_from_pickleFile(model_ft):
+    import pickle
+    with open("segnet_state_dict.pkl", "rb") as output_file:
+         my_state_dict = pickle.load(output_file)
+
+    # assign dictionary parameters to  
+    model_ft.load_state_dict(my_state_dict)
+    
+    # must evaluate to initialize batchnorms and dropouts correctly
+    model_ft.eval()
     
 # ##----------- DEMO --------------------------
 # %run 'segnet_model.ipynb'
 # #from segnet_model import network
 # model_ft = network()
-# preload_encoder_weights(model_ft)
+# load_vgg16_cnn_encoder_weights(model_ft)
+# save_weights_as_pickleFile(model_ft)
+
+# another_model_ft = network()
+# load_weights_from_pickleFile(another_model_ft)
+
+# print(another_model_ft.state_dict())
+
+
