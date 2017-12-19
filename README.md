@@ -7,13 +7,16 @@ This segmentation algorithm has two sections: the downsampling part called the E
 --------------------------TRAINING------------------------
 
 INITIALIZATION
+
 For the ENCODER part of the segnet model, the CNN and batchnormalizations weights were initialized to the CNN and
 batchnormalizations weights from the classification network vgg16_batch. (The fully connected layer parameters were ignored)
 This part is performed by load_vgg16_cnn_encoder_weights function in LoadWeights.py
 
-For the DECODER part the cnn weights were initialize to a gaussian distribution and the batchnormalizations weights to default parameters. 
+For the DECODER part the cnn weights were initialize to a gaussian distribution and the batchnormalizations weights to default
+parameters. 
 
 DATASET
+
 The segmentation model is trained to recognize roads from backgrounds using a dataset from Kitti:
 http://www.cvlibs.net/datasets/kitti/eval_road.php
 ![alt text](README_Images/um_000006.png "Description goes here")
