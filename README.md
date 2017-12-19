@@ -16,6 +16,8 @@ For the DECODER part the cnn weights were initialize to a gaussian distribution 
 DATASET
 The segmentation model is trained to recognize roads from backgrounds using a dataset from Kitti:
 http://www.cvlibs.net/datasets/kitti/eval_road.php
+![alt text](README_Images/um_000006.png "Description goes here")
+![alt text](README_Images/um_lane_000006.png "Description goes here")
 
 SAVING & LOADING MODEL
 Once the model weights are trained it is stored in a pickle file using save_weights_as_pickleFile from LoadWeights.py. If it requires
