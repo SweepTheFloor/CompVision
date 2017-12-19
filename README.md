@@ -5,6 +5,7 @@ This segmentation algorithm has two sections the downsampling part called the EN
 ![alt text](README_Images/Segnet.png "Description goes here")
 
 --------------------------TRAINING------------------------
+
 INITIALIZATION
 For the ENCODER part of the segnet model, the CNN and batchnormalizations weights were initialized to the CNN and
 batchnormalizations weights from the classification network vgg16_batch. (The fully connected layer parameters were ignored)
@@ -28,7 +29,9 @@ Dependency: segnet_model.py
 Dependency: data_loader.py
 
 ---------------------------TEST-----------------------------
+
 LOAD MODEL
+
 
 
 
