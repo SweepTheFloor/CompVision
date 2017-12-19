@@ -4,7 +4,7 @@ https://arxiv.org/abs/1511.00561  The name of this segmentation algorithm is cal
 This segmentation algorithm has two sections: the downsampling part called the ENCODER and the upsampling part called the DECODER.
 ![alt text](README_Images/Segnet.png "Description goes here")
 
-# --------------------------TRAINING------------------------
+# TRAINING
 
 ## INITIALIZATION
 
@@ -36,7 +36,7 @@ Dependency: segnet_model.py
 
 Dependency: data_loader.py
 
-# ---------------------------TEST-----------------------------
+# TEST
 
 ## LOAD MODEL
 Use load_weights_from_pickleFile from LoadWeights.py to load pretrained weights.
