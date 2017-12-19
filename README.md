@@ -28,10 +28,10 @@ more epoch runs, load the previous trained model, train it, and store it again. 
 load_weights_from_pickleFile from LoadWeights.py to load pretrained weights.
 
 ## FILES INVOLVED
-..* Main: sample_seg.py (Run this to train)
-... Dependency: LoadWeights.py
-... Dependency: segnet_model.py
-... Dependency: data_loader.py
+..* Main: sample_seg.py (Run this to train).
+... Dependency: LoadWeights.py.
+... Dependency: segnet_model.py.
+... Dependency: data_loader.py.
 
 # ---------------------------TEST-----------------------------
 
